@@ -30,7 +30,7 @@ export const Product = (props) => {
         <Link to={`/product/${product.id}`}>{title}</Link>
         <p className='product__price'>Pretul: {price}</p>
         <p>Description: {description}</p>
-        <Link to={`/categories/${category?.data.attributes.slug}`}> Category: {category?.data.attributes.name}</Link>
+        <Link to={`/categories/${category?.data.attributes.name}`}> Category: {category?.data.attributes.name}</Link>
       </div>
     </div>
   );

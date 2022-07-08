@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Product } from '../components/SingleProduct';
-import fakeData from '../data/fakeData.json';
+// import fakeData from '../data/fakeData.json';
 import { Order } from '../components/Order';
 import { Button } from '../components/Button';
 
@@ -10,13 +10,13 @@ export const Products = (props) => {
   const [order, setOrder] = useState([]);
 
   useEffect(() => {
-    setProducts(fakeData.data);
-    // const fetchData = async () => {
-    //   const res = await fetch('http://localhost:1337/api/products')
-    //   const json = await res.json()
-    //   setProducts(json.data)
-    // }
-    // fetchData()
+    // setProducts(fakeData.data);
+    const fetchData = async () => {
+      const res = await fetch('http://localhost:1337/api/products')
+      const json = await res.json()
+      setProducts(json.data)
+    }
+    fetchData()
   }, [setProducts]);
 
   const handleClick = (product, isChecked) => {
@@ -34,11 +34,11 @@ export const Products = (props) => {
     setOrder([]);
   };
   // console.log(props.category);
-  console.log(products)
+  // console.log(products)
   return (
     <div className='flex gap-2 border-4 border-gray rounded my-5 mx-5'>
       <div className='flex flex-col justify-center w-2/3 border-r-0 '>
-        {props.category !== 'all'
+        {props.category !== undefined
           ? products
               .filter((product) => product.attributes.category.data.attributes.name === props.category).map((product)=>{
                 const { title, price, description, category } = product.attributes;
