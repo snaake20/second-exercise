@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const AddProductForm = () => {
+  const navigate = useNavigate()
   const initialStateProduct = {
     data: {
       title: '',
@@ -19,6 +21,7 @@ export const AddProductForm = () => {
     };
     fetchData();
   }, []);
+  // console.log(categories)
 
   const handleSumbit = (e) => {
     e.preventDefault();
@@ -33,15 +36,15 @@ export const AddProductForm = () => {
         'Content-Type': 'application/json',
       },
       body: raw,
-      redirect: '/products',
     };
 
-    fetch('localhost:1337/api/products', requestOptions)
+    fetch('http://localhost:1337/api/products', requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log('error', error));
-
+    
     setProduct(initialStateProduct);
+    navigate('/products')
   };
 
   return (
@@ -113,11 +116,12 @@ export const AddProductForm = () => {
               }))
             }
           >
+            <option>Select category</option>
             {categories.map((category) => (
               <option
                 key={category.id}
                 className='border-2'
-                value={category.id}
+                value={category.slug}
                 onChange={(event) =>
                   setProduct((state) => ({
                     data: {
@@ -132,10 +136,10 @@ export const AddProductForm = () => {
             ))}
           </select>
         </div>
-        <div className='flex flex-row gap-1 justify-center items-center'>
+        {/* <div className='flex flex-row gap-1 justify-center items-center'>
           <label htmlFor='image'>Image:</label>
           <input type='image' className='border-2' id='image' value='send image' />
-        </div>
+        </div> */}
         <div>
           <button className='border-2 border-red-500 rounded bg-red-500 text-white ' type='submit'>
             Add Product

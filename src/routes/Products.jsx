@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Product } from '../components/SingleProduct'
-import fakeData from '../data/fakeData.json'
+// import fakeData from '../data/fakeData.json'
 import { Order } from '../components/Order'
 import { Button } from '../components/Button'
 
@@ -11,13 +11,13 @@ export const Products = (props) => {
   
   
   useEffect(() => {
-    setProducts(fakeData.data)
-    // const fetchData = async () => {
-    //   const res = await fetch('http://localhost:1337/api/products')
-    //   const json = await res.json()
-    //   setProducts(json.data)
-    // }
-    // fetchData()
+    // setProducts(fakeData.data)
+    const fetchData = async () => {
+      const res = await fetch('http://localhost:1337/api/products')
+      const json = await res.json()
+      setProducts(json.data)
+    }
+    fetchData()
   }, [setProducts])
 
   const handleClick = (product, isChecked) => {

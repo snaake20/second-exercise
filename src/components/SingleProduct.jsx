@@ -11,7 +11,7 @@ export const Product = (props) => {
   const onChangeHandler = (e) => {
     props.onClick(product, e.target.checked);
   };
-
+  console.log(category)
   return (
     <div id={`product-${id}`} className='border-b-2 border-gray last:border-b-0 bg-white flex'>
       <div
@@ -30,7 +30,7 @@ export const Product = (props) => {
         <Link to={`/product/${product.id}`}>{title}</Link>
         <p className='product__price'>Pretul: {price}</p>
         <p>Description: {description}</p>
-        <Link to={`/categories/${category.attributes.slug}`}> Category: {category.attributes.name}</Link>
+        <Link to={`/categories/${category?.data.attributes.slug}`}> Category: {category?.data.attributes.name}</Link>
       </div>
     </div>
   );

@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types'
-
 export const Button = (props) => {
     // console.log(props.order)
     const handleClick = () => {
@@ -16,7 +14,7 @@ export const Button = (props) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${props.jwt}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: toSend
         })
@@ -27,10 +25,4 @@ export const Button = (props) => {
         Order
         </button>
     )
-}
-
-Button.propTypes={
-    order: PropTypes.array.isRequired,
-    onClick: PropTypes.func,
-    jwt: PropTypes.string
 }
