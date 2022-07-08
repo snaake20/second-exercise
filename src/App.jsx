@@ -66,7 +66,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/add-new-product' element={<AddProductForm />} />
           <Route path='/product/:id' element={<Product />} />
-          <Route path='/categories/:slug' element={<Category />} />
+          <Route path='/categories/:name' element={<Category />} />
         </Routes>
       </BrowserRouter>
     </>

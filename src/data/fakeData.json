@@ -7,10 +7,29 @@
                 "price": 35,
                 "description": "Branza is a very good book",
                 "category":{
-                    "id":1,
-                    "attributes":{
-                        "name": "lactate",
-                        "slug": "lactate"
+                    "data":{
+                        "id":1,
+                        "attributes":{
+                            "name": "lactate",
+                            "slug": "lactate"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id":2,
+            "attributes":{
+                "title": "Branza",
+                "price": 35,
+                "description": "Branza is a very good book",
+                "category":{
+                    "data":{
+                        "id":1,
+                        "attributes":{
+                            "name": "lactate",
+                            "slug": "lactate"
+                        }
                     }
                 }
             }
@@ -22,10 +41,12 @@
                 "price": 35,
                 "description": "nnnnnnnnnnn",
                 "category":{
-                    "id":2,
-                    "attributes":{
-                        "name": "fructe de mare",
-                        "slug": "fructe-de-mare"
+                    "data":{
+                        "id":2,
+                        "attributes":{
+                            "name": "fructe de mare",
+                            "slug": "fructe-de-mare"
+                        }
                     }
                 }
             }
@@ -37,10 +58,12 @@
                 "price": 35,
                 "description": "aaaaaaaaaaa",
                 "category":{
-                    "id":3,
-                    "attributes":{
-                        "name": "legume",
-                        "slug": "legume"
+                    "data": {
+                        "id":3,
+                        "attributes":{
+                            "name": "legume",
+                            "slug": "legume"
+                        }
                     }
                 }
             }

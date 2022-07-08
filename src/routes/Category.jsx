@@ -1,8 +1,8 @@
-import { useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Products } from './Products';
 
 export const Category = () => {
-  const params = useSearchParams();
+  const params = useParams();
   console.log(params);
-  return <Products />;
+  return <Products category={params.name} />;
 };
