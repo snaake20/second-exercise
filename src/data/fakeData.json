@@ -1,0 +1,49 @@
+{
+    "data":[
+        {
+            "id":1,
+            "attributes":{
+                "title": "Branza",
+                "price": 35,
+                "description": "Branza is a very good book",
+                "category":{
+                    "id":1,
+                    "attributes":{
+                        "name": "lactate",
+                        "slug": "lactate"
+                    }
+                }
+            }
+        },
+        {
+            "id":8,
+            "attributes":{
+                "title": "Midii",
+                "price": 35,
+                "description": "nnnnnnnnnnn",
+                "category":{
+                    "id":2,
+                    "attributes":{
+                        "name": "fructe de mare",
+                        "slug": "fructe-de-mare"
+                    }
+                }
+            }
+        },
+        {
+            "id":9,
+            "attributes":{
+                "title": "Salata",
+                "price": 35,
+                "description": "aaaaaaaaaaa",
+                "category":{
+                    "id":3,
+                    "attributes":{
+                        "name": "legume",
+                        "slug": "legume"
+                    }
+                }
+            }
+        }
+    ]
+}

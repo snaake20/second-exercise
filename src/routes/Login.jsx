@@ -1,9 +1,10 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const Login= () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-
+  const navigate = useNavigate()
   const onSubmitHandler = (e) => {
 
     e.preventDefault()
@@ -22,18 +23,19 @@ export const Login= () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        localStorage.setItem('jwt', data.jwt)
+        localStorage.setItem('username', username)
+        localStorage.setItem('token', data.jwt)
       })
       .catch((err) => console.log(err))
       
     setUsername('')
     setPassword('')
-
+    navigate('/products')
   }
   return (
-    <>
+    <div className='flex justify-center bg-gray-100 mt-40 py-40'>
       <form
-        className='flex flex-col gap-2 justify-center items-center '
+        className='flex flex-col gap-2 justify-center items-center  bg-white rounded-lg shadow-lg p-5 max-w-xs '
         onSubmit={onSubmitHandler}
       >
         <div className='flex flex-row gap-1 justify-center items-center'>
@@ -62,6 +64,6 @@ export const Login= () => {
           Login
         </button>
       </form>
-    </>
+    </div>
   )
 }

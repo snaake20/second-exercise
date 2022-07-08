@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-import { Product } from './Product'
-import fakeData from './data/fakeData.json'
-import { Order } from './Order'
-import { Button } from './Button'
+import { Product } from '../components/SingleProduct'
+import fakeData from '../data/fakeData.json'
+import { Order } from '../components/Order'
+import { Button } from '../components/Button'
 
-const Products = () => {
+export const Products = (props) => {
   const [products, setProducts] = useState([])
   const [orderList, setOrderList] = useState([])
   const [order, setOrder] = useState([])
@@ -40,16 +39,31 @@ const Products = () => {
   return (
     <div className='flex gap-2 border-4 border-gray rounded my-5 mx-5'>
       <div className='flex flex-col justify-center w-2/3 border-r-0 '>
-        {products.map((product) => {
+        {!props.category ? products.map((product) => {
           // console.log(product)
-          const { name, price, bio } = product.attributes
+          const { title, price, description, category } = product.attributes
           return (
             <Product
               key={product.id}
               id={product.id}
-              name={name}
+              title={title}
               price={price}
-              bio={bio}
+              description={description}
+              category={category}
+              onClick={handleClick}
+              checked={orderList.some((p) => p.id === product.id)}
+            />
+          )
+        }) : products.filter((product) => product.attributes.category === props.category).map((product) => {
+          const { title, price, description, category } = product.attributes
+          return (
+            <Product
+              key={product.id}
+              id={product.id}
+              title={title}
+              price={price}
+              description={description}
+              category={category}
               onClick={handleClick}
               checked={orderList.some((p) => p.id === product.id)}
             />
@@ -65,8 +79,8 @@ const Products = () => {
         ) : (
           orderList.map((order) => {
             // console.log(order)
-            const { id, name, price } = order
-            return <Order key={id} name={name} price={price} onClick={handleClick} />
+            const { id, title, price } = order
+            return <Order key={id} title={title} price={price} onClick={handleClick} />
           })
         )}
         {orderList.length ? <Button order={order} onClick={clear} /> : null}
@@ -74,7 +88,3 @@ const Products = () => {
     </div>
   )
 }
-Products.propTypes ={
-  jwt: PropTypes.string
-}
-export default Products
