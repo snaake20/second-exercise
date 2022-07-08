@@ -51,7 +51,7 @@ export const AddProductForm = () => {
     <div className='flex justify-center items-center mt-40'>
       <form
         onSubmit={handleSumbit}
-        className='flex flex-col gap-2 justify-center items-center bg-white rounded-lg shadow-lg p-5 max-w-xs'
+        className='flex flex-col gap-2 justify-center items-center bg-white border-4 border-gray-500 rounded-lg shadow-lg p-5 max-w-xs'
       >
         <div className='flex flex-row gap-1 justify-center items-center'>
           <label htmlFor='title'>Title:</label>

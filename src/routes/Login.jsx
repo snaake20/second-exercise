@@ -33,9 +33,9 @@ export const Login= () => {
     navigate('/products')
   }
   return (
-    <div className='flex justify-center bg-gray-100 mt-40 py-40'>
+    <div className='flex justify-center mt-40'>
       <form
-        className='flex flex-col gap-2 justify-center items-center  bg-white rounded-lg shadow-lg p-5 max-w-xs '
+        className='flex flex-col gap-2 justify-center items-center border-4 border-gray-500 bg-white rounded-lg shadow-lg p-5 max-w-xs '
         onSubmit={onSubmitHandler}
       >
         <div className='flex flex-row gap-1 justify-center items-center'>
