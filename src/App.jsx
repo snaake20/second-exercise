@@ -4,7 +4,7 @@ import { Products } from './routes/Products';
 import { Category } from './routes/Category';
 import { Product } from './routes/Product';
 import { AddProductForm } from './routes/AddProductForm';
-import { Navbar } from './components/Navbar';
+import { Navbar } from './components/App/Navbar';
 import { Categories } from './routes/Categories';
 
 function App() {

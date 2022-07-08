@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Product } from '../components/SingleProduct';
+import { Product } from '../components/Products/SingleProduct';
 import fakeData from '../data/fakeData.json';
-import { Order } from '../components/Order';
-import { Button } from '../components/Button';
+import { Order } from '../components/Order/Order';
+import { Button } from '../components/Order/Button';
 
 export const Products = (props) => {
   const [products, setProducts] = useState([]);
