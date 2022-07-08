@@ -11,7 +11,7 @@ export const Product = (props) => {
   const onChangeHandler = (e) => {
     props.onClick(product, e.target.checked);
   };
-  console.log(category)
+  // console.log(category)
   return (
     <div id={`product-${id}`} className='border-b-2 border-gray last:border-b-0 bg-white flex'>
       <div
@@ -27,10 +27,11 @@ export const Product = (props) => {
         <label htmlFor={`product__cart-add${id}`}>Add to Cart</label>
       </div>
       <div className='product__info p-2'>
-        <Link to={`/product/${product.id}`}>{title}</Link>
-        <p className='product__price'>Pretul: {price}</p>
+        <p>{title}</p>
+        <p>Pretul: {price}</p>
         <p>Description: {description}</p>
         <Link to={`/categories/${category?.data.attributes.name}`}> Category: {category?.data.attributes.name}</Link>
+        <Link to={`/product/${product.id}`}>View</Link>
       </div>
     </div>
   );
