@@ -13,6 +13,7 @@ export const AddProductForm = () => {
   };
   const [product, setProduct] = useState(initialStateProduct);
   const [categories, setCategories] = useState([]);
+  
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch('http://localhost:1337/api/categories');
