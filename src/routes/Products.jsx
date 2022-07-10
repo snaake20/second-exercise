@@ -3,6 +3,7 @@ import { Product } from '../components/Products/SingleProduct';
 import fakeData from '../data/fakeData.json';
 import { Order } from '../components/Order/Order';
 import { Button } from '../components/Order/Button';
+// import {fetchProducts} from '../utils/fetches';
 
 export const Products = (props) => {
   const [products, setProducts] = useState([]);
@@ -12,12 +13,7 @@ export const Products = (props) => {
 
   useEffect(() => {
     setProducts(fakeData.data);
-    // const fetchData = async () => {
-    //   const res = await fetch('http://localhost:1337/api/products')
-    //   const json = await res.json()
-    //   setProducts(json.data)
-    // }
-    // fetchData()
+    // setProducts(fetchProducts());
   }, [setProducts]);
 
   const handleClick = (product, isChecked) => {
@@ -28,19 +24,17 @@ export const Products = (props) => {
       setOrderList((prev) => prev.filter((p) => p.id !== product.id));
       setOrder((prev) => prev.filter((p) => p !== product.id));
     }
-    // console.log(orderList)
   };
+
   const clear = () => {
     setOrderList([]);
     setOrder([]);
   };
-  // console.log(props.category);
-  // console.log(products)
-  // console.log(isEditing)
+  
   return (
     <>
       <div className='flex justify-end mr-5 mt-5'>
-        {localStorage.getItem('token') ? <></> : <button // add ! for it to actually work
+        {!localStorage.getItem('token') ? <></> : <button // add ! for it to actually work
           className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
           onClick={() => setIsEditing(!isEditing)}
         >

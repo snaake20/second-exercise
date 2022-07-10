@@ -2,6 +2,8 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
+import { login } from '../../utils/fetches'
+
 const SignupSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string().required('Required'),
@@ -15,30 +17,12 @@ export const LoginForm = () => {
     <Formik
       initialValues={{
         email: '',
-
         password: '',
       }}
       validationSchema={SignupSchema}
       onSubmit={(values, { resetForm }) => {
-        // console.log(values);
-        const res = {
-          identifier: values.email,
-          password: values.password,
-        };
-        const data = JSON.stringify(res);
-        console.log(data)
-        fetch('http://localhost:1337/api/auth/local', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: data,
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            localStorage.setItem('token', data.jwt);
-          })
-          .catch((err) => console.log(err));
+        const { email, password } = values;
+        login(email, password)
         resetForm();
         navigate('/products');
       }}
