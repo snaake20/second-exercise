@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Product } from '../components/Products/SingleProduct';
-import fakeData from '../data/fakeData.json';
+// import fakeData from '../data/fakeData.json';
 import { Order } from '../components/Order/Order';
 import { Button } from '../components/Order/Button';
-// import {fetchProducts} from '../utils/fetches';
+import {fetchProducts} from '../utils/fetches';
 
 export const Products = (props) => {
   const [products, setProducts] = useState([]);
@@ -12,10 +12,9 @@ export const Products = (props) => {
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    setProducts(fakeData.data);
-    // setProducts(fetchProducts());
+    // setProducts(fakeData.data);
+    fetchProducts().then((res)=>setProducts(res));
   }, [setProducts]);
-
   const handleClick = (product, isChecked) => {
     if (isChecked === true) {
       setOrderList((prev) => [...prev, product]);

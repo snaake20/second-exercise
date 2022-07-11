@@ -11,13 +11,14 @@ export const Categories = () => {
     };
     fetchData();
   }, []);
+  console.log(categories)
   return (
     <div className='flex flex-col justify-center items-center'>
       <h1>Categories</h1>
       <ul className='flex flex-col gap-2 justify-center items-center'>
         {categories.map((category) => (
           <li key={category.id}>
-            <Link to={`/categories/${category.id}`}>{category.attributes.name}</Link>
+            <Link to={`/categories/${category.attributes.name}`}>{category.attributes.name}</Link>
           </li>
         ))}
       </ul>

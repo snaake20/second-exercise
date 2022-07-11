@@ -9,8 +9,10 @@ export const AddProductForm = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    setCategories(fetchCategories());
+    fetchCategories().then((res) => setCategories(res))
   }, []);
+  const categoriesArray = categories.map((c) => c.attributes.name)
+  // console.log(categoriesArray)
   return (
   <>
     <Formik
@@ -24,9 +26,10 @@ export const AddProductForm = () => {
         title: Yup.string().required('Required'),
         price: Yup.number().required('Required'),
         description: Yup.string().required('Required'),
-        _category: Yup.string().oneOf(categories).required('Required')
+        _category: Yup.string().oneOf(categoriesArray)
       })}
       onSubmit={(values, { resetForm }) => {
+        console.log(values)
         // const { title, price, description, _category } = values;
         postProduct(values)
         resetForm();
@@ -96,18 +99,18 @@ export const AddProductForm = () => {
                 as='select'
               >
             <option>Select category</option>
-                {categories.map((category) => (
+                {categoriesArray.map((category) => (
                   <option key={category} value={category}>
                     {category}
                   </option>
                 ))}
               </Field>
             </div>
-            {errors._category && touched._category ? (
+            {/* {errors._category && touched._category ? (
               <div className='flex justify-center border-4 border-red-500 bg-red-500 text-white'>
                 {errors._category}
               </div>
-            ) : null}
+            ) : null} */}
           </div>
           <button type='submit' className='border-4 rounded border-red-500 bg-red-500 text-white'>
             Add Product

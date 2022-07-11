@@ -20,8 +20,8 @@ export const login = (email, password) => {
 export const fetchProducts = async () => {
   try {
     const res = await fetch('http://localhost:1337/api/products');
-    const data = await res.json();
-    return data;
+    const json = await res.json();
+    return json.data;
   } catch (err) {
     return console.log(err);
   }
@@ -30,7 +30,7 @@ export const fetchCategories = async () => {
   try {
     const res = await fetch('http://localhost:1337/api/categories');
     const json = await res.json();
-    return json;
+    return json.data;
   } catch (error) {
     return console.log(error);
   }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import fakeData from '../data/fakeData.json';
+// import fakeData from '../data/fakeData.json';
 
 export const Product = () => {
   const params = useParams();
@@ -8,14 +8,14 @@ export const Product = () => {
   const [product, setProduct] = useState({});
 
   useEffect(() => {
-    const product = fakeData.data.find((p) => p.id == params.id);
-    setProduct(product);
-    // const fetchData = async () => {
-    //   const res = await fetch(`http://localhost:1337/api/products/${params.id}`)
-    //   const json = await res.json()
-    //   setProduct(json.data)
-    // }
-    // fetchData()
+    // const product = fakeData.data.find((p) => p.id == params.id);
+    // setProduct(product);
+    const fetchData = async () => {
+      const res = await fetch(`http://localhost:1337/api/products/${params.id}`)
+      const json = await res.json()
+      setProduct(json.data)
+    }
+    fetchData()
     return () => {};
   }, []);
   return (
